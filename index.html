@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada Interativa</title>
+</head>
+<body>
+    <h1>Tabuada Interativa</h1>
+    <p>Digite um número para ver sua tabuada (ou 0 para sair):</p>
+    <input type="number" id="number" min="0">
+    <button onclick="generateTabuada()">Gerar Tabuada</button>
+    <div id="result"></div>
+
+    <script>
+        function generateTabuada() {
+            let numero = document.getElementById("number").value;
+            let result = document.getElementById("result");
+
+            // Verifica se a entrada é válida
+            if (numero === "") {
+                result.innerHTML = "Por favor, digite um número.";
+                return;
+            }
+
+            numero = parseInt(numero);
+
+            // Verifica se o usuário quer sair
+            if (numero === 0) {
+                result.innerHTML = "Saindo do programa.";
+                return;
+            }
+
+            // Gera e exibe a tabuada
+            let tabuada = `<h2>Tabuada do ${numero}:</h2>`;
+            for (let i = 1; i <= 10; i++) {
+                tabuada += `<p>${numero} x ${i} = ${numero * i}</p>`;
+            }
+            result.innerHTML = tabuada;
+        }
+    </script>
+</body>
+</html>
